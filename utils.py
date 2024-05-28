@@ -76,3 +76,12 @@ class Face:
         if 0:
             image = cv2.circle(image, (cx, cy), radius, color, thickness)
         return image
+
+
+def detected_and_draw_faces(image):
+    bboxes = get_bboxes(image)  # FIXME:! rewrite this function!
+    print(len(bboxes))
+    for bbox in bboxes:
+        face = Face(bbox)
+        image = face.draw_lines(image)
+    return image
